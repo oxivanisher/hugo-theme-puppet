@@ -5,6 +5,7 @@ draft = true
 description = ""
 subtitle = ""
 header_img = ""
+feature_img = ""
 short = false
 toc = true
 tags = []
