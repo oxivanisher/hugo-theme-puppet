@@ -48,7 +48,16 @@
 
         {{/* Create thumbnail, rotate it if needed */}}
         {{ $thumbnail := ($original.Resize (printf "%s %s" $thumbnailResizeOptions $rotation)) }}
-        <img src="{{ $thumbnail.RelPermalink }}" title="{{ .Title }}">
+        <script>
+          window.addEventListener('load', function () {
+            baguetteBox.run('.featured-image');
+          });
+        </script>
+        <div class="featured-image">
+          <a href="{{ $original.RelPermalink }}" data-caption="{{ .Title }}">
+            <img src="{{ $thumbnail.RelPermalink }}" title="{{ .Title }}" alt="{{ .Title }}">
+          </a>
+        </div>
         {{ end }}
         {{ .Content }}
 
