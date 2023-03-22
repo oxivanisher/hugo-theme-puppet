@@ -1,7 +1,7 @@
 <div class="post-preview">
   <a href="{{ .RelPermalink }}">
     {{ if isset .Params "feature_img" }}
-    {{ $thumbnailResizeOptions := .Site.Params.postPreviewFeatureImgResizeOptions | default "300x150 q85 Lanczos" }}
+    {{ $thumbnailResizeOptions := .Site.Params.postPreviewFeatureImgResizeOptions | default "160x160 q85 Lanczos" }}
 
     {{ $original := .Page.Resources.GetMatch (.Params.feature_img) }}
 
@@ -37,7 +37,7 @@
     {{ end }}
 
     {{/* Create thumbnail, rotate it if needed */}}
-    {{ $thumbnail := ($original.Fit (printf "%s %s" $thumbnailResizeOptions $rotation)) }}
+    {{ $thumbnail := ($original.Fill (printf "%s %s" $thumbnailResizeOptions $rotation)) }}
     <img class="post-content-preview-thumbnail" src="{{ $thumbnail.RelPermalink }}">
     {{ end }}
 
