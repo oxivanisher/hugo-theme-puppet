@@ -10,6 +10,7 @@
               col-md-10 col-md-offset-1
               post-container">
 
+        {{ if not .Params.hide_thumbnail }}
         {{- $images := $.Resources.ByType "image" -}}
         {{- $original := $images.GetMatch "{*feature*,*cover*,*thumbnail*}" -}}
         {{- with $original -}}
@@ -24,6 +25,7 @@
             <img src="{{ $thumbnail.RelPermalink }}" title="{{ $.Page.Title }}" alt="{{ $.Page.Title }}">
           </a>
         </div>
+        {{- end -}}
         {{- end -}}
         {{ .Content }}
 
