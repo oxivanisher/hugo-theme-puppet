@@ -15,7 +15,7 @@
     <div class="post-content-preview">
       {{ if isset .Params "description" }} {{ index .Params "description" }}
       {{ else }}
-      {{ .Summary | plainify | truncate 180 }}
+      {{ .Summary | plainify | safeHTML | truncate 180 }}
       {{ end }}
     </div>
   </a>
