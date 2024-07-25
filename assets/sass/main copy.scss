@@ -105,7 +105,7 @@ select {
   color: #337ab7;
   border-color: #337ab7;
   padding: 0em 0.4em;
-  background: var(--body-bg);
+  background: white;
 
   &.sel-lang {
     min-height: 28px;
@@ -137,7 +137,7 @@ hr.small {
   max-width: 100px;
   margin: 15px auto;
   border-width: 4px;
-  border-color: var(--body-bg);
+  border-color: white;
 }
 
 // add by Hux
@@ -389,7 +389,7 @@ samp {
     position: absolute;
     right: 0;
     border: none;
-    background: var(--body-bg);
+    background: white;
     box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
     box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px,
       rgba(0, 0, 0, 0.239216) 0px 1px 4px;
@@ -476,12 +476,12 @@ samp {
   .navbar-brand {
     font-weight: 800;
     // materialize
-    color: var(--nav-text);
+    color: white;
     height: 56px;
     line-height: 25px;
 
     &:hover {
-      color: var(--nav-focus);
+      color: var(--white-faded);
     }
   }
 
@@ -511,25 +511,25 @@ samp {
     border-bottom: 1px solid transparent;
 
     .navbar-brand {
-      color: var(--nav-text);
+      color: white;
       padding: 20px;
       line-height: 20px;
 
       &:hover,
       &:focus {
-        color: var(--nav-focus);
+        color: var(--white-faded);
       }
     }
 
     .nav {
       li {
         a {
-          color: var(--nav-text);
+          color: white;
           padding: 20px;
 
           &:hover,
           &:focus {
-            color: var(--nav-focus);
+            color: var(--white-faded);
           }
 
           &:active {
@@ -592,7 +592,7 @@ samp {
       position: fixed;
       top: -61px;
       background-color: var(--white-faded);
-      border-bottom: 1px solid var(--body-bg);
+      border-bottom: 1px solid #f2f2f2;
       -webkit-transition: -webkit-transform 0.3s;
       -moz-transition: -moz-transform 0.3s;
       transition: transform 0.3s;
@@ -641,7 +641,7 @@ samp {
     .post-heading,
     .page-heading {
       padding: 85px 0 20px;
-      color: var(--white-faded);
+      color: var(--gray-dark);
 
       .subheading {
         margin-bottom: 15px;
@@ -680,7 +680,7 @@ samp {
   .post-heading,
   .page-heading {
     padding: 85px 0 55px;
-    color: var(--heading-text);
+    color: white;
 
     @media only screen and (min-width: 768px) {
       padding: 150px 0;
@@ -749,7 +749,7 @@ samp {
       font-size: 16px;
 
       a {
-        color: var(--text-color);
+        color: white;
       }
     }
 
@@ -772,13 +772,13 @@ samp {
     position: absolute;
     bottom: 6px;
     right: 9px;
-    color: var(--text-color);
+    color: white;
     opacity: 0.3;
     font-size: 10px;
     z-index: 1;
 
     a {
-      color: var(--text-color);
+      color: white;
     }
 
     @media only screen and (min-width: 768px) {
@@ -910,7 +910,7 @@ footer {
     margin-bottom: 0;
 
     a {
-      color: var(--link-color);
+      color: #337ab7;
 
       // different to $brand-primary
       &:hover,
@@ -944,7 +944,7 @@ footer {
   &:focus {
     background-color: var(--brand-primary);
     border: 1px solid var(--brand-primary);
-    color: var(--body-bg);
+    color: white;
   }
 }
 
@@ -964,7 +964,7 @@ footer {
       font-weight: 800;
       letter-spacing: 1px;
       padding: 10px;
-      background-color: var(--body-bg);
+      background-color: white;
       border-radius: 0;
 
       @media only screen and (min-width: 768px) {
@@ -979,13 +979,13 @@ footer {
 
     >a:hover,
     >a:focus {
-      color: var(--body-bg);
+      color: white;
       background-color: var(--brand-primary);
       border: 1px solid var(--brand-primary);
 
       // V1.6 display title
       >span {
-        color: var(--body-bg);
+        color: white;
       }
     }
   }
@@ -1006,24 +1006,24 @@ footer {
 // -- Highlight Color Customization
 
 ::-moz-selection {
-  color: var(--body-bg);
+  color: white;
   text-shadow: none;
   background: var(--brand-primary);
 }
 
 ::selection {
-  color: var(--body-bg);
+  color: white;
   text-shadow: none;
   background: var(--brand-primary);
 }
 
 img::selection {
-  color: var(--body-bg);
+  color: white;
   background: transparent;
 }
 
 img::-moz-selection {
-  color: var(--body-bg);
+  color: white;
   background: transparent;
 }
 
@@ -1064,8 +1064,8 @@ img::-moz-selection {
 
     &:hover,
     &:active {
-      color: var(--body-bg);
-      border-color: var(--body-bg);
+      color: white;
+      border-color: white;
       background-color: rgba(255, 255, 255, 0.4);
       text-decoration: none;
     }
@@ -1253,7 +1253,7 @@ img::-moz-selection {
     width: 18px;
     border-radius: 0px;
     // materialize
-    background-color: var(--nav-text);
+    background-color: white;
   }
 
   .icon-bar+.icon-bar {

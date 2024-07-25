@@ -66,8 +66,10 @@
   <link rel="shortcut icon" href="{{ "favicon.png" | relURL }}" type="image/x-icon">
   <link rel="shortcut icon" href="{{ "favicon.ico" | relURL }}" type="image/x-icon">
   <link rel="icon" href="{{ "logo.svg" | relURL }}" sizes="any" type="image/svg+xml" />
-{{ end }}
+  {{ end }}
 
+  {{ $themeToggleJs := resources.Get "js/theme-toggle.js" | resources.ExecuteAsTemplate "js/theme-toggle.js" . | minify | fingerprint }}
+  <script src="{{ $themeToggleJs.RelPermalink }}"></script>
 </head>
 
 <!-- hack iOS CSS :active style -->

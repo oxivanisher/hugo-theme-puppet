@@ -1,0 +1,75 @@
+/* assets/sass/_colors.scss */
+
+:root {
+  --body-bg: #f7f7f7;
+  --text-color: #2b2b2b;
+  --primary-color: #0056b3;
+  --secondary-color: #6c757d;
+  --link-color: #007bff;
+  --footer-bg: #333;
+  --footer-text: #fff;
+  --footer-link: #ccc;
+
+  --brand-primary: #0085a1;
+  --brand-gray: #a3a3a3;
+
+  --gray-dark: #404040;
+  --gray-light: #bfbfbf;
+
+  --white-faded: rgba(255, 255, 255, 0.8);
+
+  --tagcloud-start: #bbbbee;
+  --tagcloud-end: #2f93b4;
+
+  --nav-text: var(--body-bg);
+  --nav-focus: var(--white-faded);
+
+  --heading-text: var(--body-bg);
+}
+
+.dark-mode {
+  --body-bg: #2b2b2b;
+  --text-color: #c5c5c5;
+  --primary-color: #00aaff;
+  --secondary-color: #a9a9a9;
+  --link-color: #0099ff;
+  --footer-bg: #1a1a1a;
+  --footer-text: #c5c5c5;
+  --footer-link: #a9a9a9;
+
+  --brand-primary: #00aaff;
+  --brand-gray: #8a8a8a;
+
+  --gray-dark: #d0d0d0;
+  --gray-light: #505050;
+
+  --white-faded: rgba(200, 200, 200, 0.8);
+
+  --tagcloud-start: #2f93b4;
+  --tagcloud-end: #bbbbee;
+
+  --nav-text: var(--text-color);
+  --nav-focus: var(--white-faded);
+
+  --heading-text: var(--text-color);
+}
+
+.sun-btn {
+  display: none;
+  font-size: 2rem;
+  color: #ffc533;
+}
+
+.moon-btn {
+  display: block;
+  font-size: 2rem;
+  color: #fff9be;
+}
+
+.dark-mode .sun-btn {
+  display: block;
+}
+
+.dark-mode .moon-btn {
+  display: none;
+}

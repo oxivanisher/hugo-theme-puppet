@@ -1,5 +1,5 @@
 $start-color: #bbbbee;
-$end-color: #2f93b4;
+$end-color: #6c757d;
 $spread: {{ .spread }};
 $weighting: {{ .weighting }};
 @function tagColor() {
@@ -11,7 +11,7 @@ $weighting: {{ .weighting }};
     $incr-b: (blue($end-color) - $sb) / $spread;
 
     $tag-color: rgb( $sr + $incr-r * $weighting, $sg + $incr-g * $weighting, $sb + $incr-b * $weighting );
-    
+
     @return $tag-color;
 }
 
