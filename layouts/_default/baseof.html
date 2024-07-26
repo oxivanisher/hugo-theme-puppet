@@ -142,6 +142,9 @@
   {{ end }}
 
   {{ partial "footer.html" . }}
+
+  {{ $navCollapseHeightToggleJs := resources.Get "js/nav-collapse-hight.js" | resources.ExecuteAsTemplate "js/nav-collapse-hight.js" . | minify | fingerprint }}
+  <script src="{{ $navCollapseHeightToggleJs.RelPermalink }}"></script>
 </body>
 
 </html>
