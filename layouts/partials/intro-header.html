@@ -1,14 +1,8 @@
 {{ $header_img := .Scratch.Get "header_img" }}
 
 {{ if .IsPage }}
-<style type="text/css">
-  header.intro-header {
-    position: relative;
-    background-image: url('{{ with $header_img }}{{- . -}}{{ end }}');
-  }
-</style>
 {{ if $header_img }}
-<header class="intro-header ">
+<header class="intro-header" style="background-image: url('{{ with $header_img }}{{- . -}}{{ end }}'); position: relative;">
   {{ else }}
   <header class="intro-header style-text">
     {{ end }}
