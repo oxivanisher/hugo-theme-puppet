@@ -39,7 +39,7 @@
 
 {{- $toc := .Scratch.Get "toc" -}}
 {{- if $toc -}}
-<script type="text/javascript">
+<script>
   function generateCatalog(selector) {
     _containerSelector = 'div.post-container'
     // init
@@ -69,7 +69,7 @@
 </script>
 
 {{- $navJs := resources.Get "js/jquery.nav.js" | minify | fingerprint -}}
-<script type="text/javascript" src='{{ $navJs.RelPermalink }}'></script>
+<script src='{{ $navJs.RelPermalink }}'></script>
 <script>
    $(document).ready( function () {
     $('.catalog-body').onePageNav({
