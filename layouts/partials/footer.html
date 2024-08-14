@@ -10,7 +10,7 @@
           {{ site.Copyright | markdownify }}
         {{- else }}
           Copyright &copy; {{ .Site.Title }} {{ now.Format "2006" }}
-        {{- end }}  
+        {{- end }}
           <br>
           Powered by <a href="https://gohugo.io">Hugo</a>
         </p>
@@ -22,24 +22,23 @@
 <script src={{ "js/jquery.min.js" | relURL }}></script>
 <script src={{"js/bootstrap.min.js" | relURL }} crossorigin="anonymous"></script>
 
-<!-- Custom Theme JavaScript -->
+{{- /* Custom Theme JavaScript */ -}}
 {{ $mainJs := resources.Get "js/hux-blog.js" | minify | fingerprint }}
 <script src="{{ $mainJs.RelPermalink }}"></script>
 
-<!-- Simple Jekyll Search -->
+{{- /* Simple Jekyll Search */ -}}
 <script src={{ "js/simple-jekyll-search.min.js" | relURL }}></script>
 
-{{ $searchJs := resources.Get "js/search.js" | resources.ExecuteAsTemplate "js/search.js" . | minify | fingerprint }}
+{{- $searchJs := resources.Get "js/search.js" | resources.ExecuteAsTemplate "js/search.js" . | minify | fingerprint }}
 <script src="{{ $searchJs.RelPermalink }}"></script>
 
-
-{{ if eq .Type "archive" }}
-{{ $archiveJS := resources.Get "js/archive.js" | minify | fingerprint }}
+{{ if eq .Type "archive" -}}
+{{- $archiveJS := resources.Get "js/archive.js" | minify | fingerprint -}}
 <script src='{{ $archiveJS.RelPermalink }}'></script>
-{{ end }}
+{{ end -}}
 
-{{ $toc := .Scratch.Get "toc" }}
-{{ if $toc }}
+{{- $toc := .Scratch.Get "toc" -}}
+{{- if $toc -}}
 <script type="text/javascript">
   function generateCatalog(selector) {
     _containerSelector = 'div.post-container'
@@ -69,7 +68,7 @@
   }))
 </script>
 
-{{ $navJs := resources.Get "js/jquery.nav.js" | minify | fingerprint }}
+{{- $navJs := resources.Get "js/jquery.nav.js" | minify | fingerprint -}}
 <script type="text/javascript" src='{{ $navJs.RelPermalink }}'></script>
 <script>
    $(document).ready( function () {
@@ -89,12 +88,11 @@
   });
 </script>
 
-{{ end }}
+{{- end -}}
 
-
-{{ if not hugo.IsServer }}
+{{- if not hugo.IsServer }}
 {{ template "_internal/google_analytics.html" . }}
-{{ end }}
+{{ end -}}
 
-{{ $zoom_js := resources.Get "zoomjs/zoom.js" | resources.Minify }}
+{{- $zoom_js := resources.Get "zoomjs/zoom.js" | resources.Minify }}
 <script src="{{ $zoom_js.RelPermalink }}"></script>
