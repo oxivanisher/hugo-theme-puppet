@@ -55,7 +55,7 @@
   {{ end -}}
 
   {{ range .AlternativeOutputFormats -}}
-  {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
+  {{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
   {{ end -}}
 
   {{ if .Site.Params.useFaviconGenerator }}
@@ -67,7 +67,7 @@
   <link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}">
   <link rel="shortcut icon" href="{{ "favicon.png" | relURL }}" type="image/x-icon">
   <link rel="shortcut icon" href="{{ "favicon.ico" | relURL }}" type="image/x-icon">
-  <link rel="icon" href="{{ "logo.svg" | relURL }}" sizes="any" type="image/svg+xml" />
+  <link rel="icon" href="{{ "logo.svg" | relURL }}" sizes="any" type="image/svg+xml">
   {{ end }}
 
   {{ $themeToggleJs := resources.Get "js/theme-toggle.js" | resources.ExecuteAsTemplate "js/theme-toggle.js" . | minify | fingerprint }}
