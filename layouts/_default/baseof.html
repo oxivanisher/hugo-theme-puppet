@@ -73,10 +73,10 @@
   {{ $themeToggleJs := resources.Get "js/theme-toggle.js" | resources.ExecuteAsTemplate "js/theme-toggle.js" . | minify | fingerprint }}
   <script src="{{ $themeToggleJs.RelPermalink }}"></script>
 </head>
-
+{{/*
 <!-- hack iOS CSS :active style -->
-
-<body ontouchstart="">
+this was <body ontouchstart=""> ... but this is not valid html
+ */}}<body>
   {{- $header_img := .Param "header_img" -}}
   {{- if .IsHome -}}
   {{ $header_img = .Site.Params.img_home }}
