@@ -9,10 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
     updateToggleButton(theme);
   };
 
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    setTheme('dark');
-  }
-
   const updateToggleButton = (theme) => {
     if (theme === 'dark') {
       sunBtn.style.display = 'list-item';
@@ -23,10 +19,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    localStorage.setItem('theme', 'dark');
+  } else {
+    localStorage.setItem('theme', 'light');
+  }
+
   sunBtn.addEventListener('click', () => setTheme('light'));
   moonBtn.addEventListener('click', () => setTheme('dark'));
 
   // Apply saved theme on load
-  const savedTheme = localStorage.getItem('theme') || 'light';
-  setTheme(savedTheme);
+  setTheme(localStorage.getItem('theme'));
 });
