@@ -141,9 +141,9 @@ this was <body ontouchstart=""> ... but this is not valid html
   </div>
 
   {{- end -}}
-
   {{- partial "footer.html" . }}
   {{- $navCollapseHeightToggleJs := resources.Get "js/nav-collapse-hight.js" | resources.ExecuteAsTemplate "js/nav-collapse-hight.js" . | minify | fingerprint -}}
+  {{ block "custom_css" . }}{{ end }}
   <script src="{{ $navCollapseHeightToggleJs.RelPermalink }}"></script>
 </body>
 </html>
