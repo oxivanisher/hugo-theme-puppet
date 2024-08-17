@@ -30,7 +30,7 @@
         {{ .Content }}
 
         <hr style="visibility: hidden;">
-        <ul class="pager">
+        <ul class="pager" hidden>
           {{ with .Prev }}
           <li class="previous">
             <a href="{{ .RelPermalink }}" data-toggle="tooltip" data-placement="top" title="{{ .Title }}">
