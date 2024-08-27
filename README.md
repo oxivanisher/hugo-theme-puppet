@@ -8,7 +8,7 @@
 
 ## Screenshot
 
-![Home](https://raw.githubusercontent.com/roninro/hugo-theme-puppet/master/images/screenshot.png)
+![Home](https://raw.githubusercontent.com/roninro/hugo-theme-puppet/master/images/screenshot.webp)
 
 ## Features
 
@@ -34,7 +34,7 @@ $ git clone https://github.com/roninro/hugo-theme-puppet.git themes/puppet
 
 ## Configuration
 
-Take a look inside the [exampleSite](exampleSite) folder of this theme. You'll find a file called [config.toml](exampleSite/config.toml). 
+Take a look inside the [exampleSite](exampleSite) folder of this theme. You'll find a file called [config.toml](exampleSite/config.toml).
 To use it, copy the [config.toml](exampleSite/config.toml) in the root directory of your website. Overwrite the existing config file if necessary.
 
 ## Content
