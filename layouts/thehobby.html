@@ -1,0 +1,26 @@
+{{ define "main" }}
+<!-- Main Content -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1
+      postlist-container">
+      {{ range .Pages }}
+      <div class="image-gallery">
+        <a href="{{ .RelPermalink }}">
+          thehobby.html yay!
+          {{- $images := $.Resources.ByType "image" -}}
+          {{- $original := $images.GetMatch "{*feature*,*cover*,*thumbnail*}" -}}
+          {{- with $original -}}
+          {{- $thumbnail := $original.Fill (default "300x212 q85 CatmullRom Center"
+          $.Site.Params.postPrevThumbResOptions) -}}
+          <img class="post-content-preview-thumbnail" src="{{ $thumbnail.RelPermalink }}" alt="{{ .Title }}"
+            title="{{ .Title }}"><br />
+          {{ .Title }}
+          {{- end -}}
+        </a>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</div>
+{{ end }}
