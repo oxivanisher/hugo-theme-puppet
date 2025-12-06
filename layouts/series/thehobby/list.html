@@ -1,5 +1,6 @@
 {{ define "container" }}
-{{ $pageSize := default 12 (mul (default 6 site.Params.pagination.pagerSize) 2) }}
+{{ $defaultPager := .Paginate .Pages }}
+{{ $pageSize := mul $defaultPager.PagerSize 2 }}
 {{ $paginator := .Paginate .Pages $pageSize }}
 {{ range $paginator.Pages }}
 <div class="image-gallery thehobby-gallery">
