@@ -1,7 +1,7 @@
 <div class="post-preview">
   <a href="{{ .RelPermalink }}">
 
-    {{- $images := $.Resources.ByType "image" -}}
+    {{- $images := .Resources.ByType "image" -}}
     {{- $original := $images.GetMatch "{*feature*,*cover*,*thumbnail*}" -}}
     {{- with $original -}}
     {{- $thumbnail := $original.Fill (default "160x160 q85 CatmullRom Center" $.Site.Params.postPrevThumbResOptions) -}}
