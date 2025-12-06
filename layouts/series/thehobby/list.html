@@ -1,15 +1,16 @@
 {{ define "container" }}
 {{ range .Pages }}
-<div class="image-gallery">
+<div class="image-gallery thehobby-gallery">
   <a href="{{ .RelPermalink }}">
     {{- $images := .Resources.ByType "image" -}}
     {{- $original := $images.GetMatch "{*feature*,*cover*,*thumbnail*}" -}}
     {{- with $original -}}
-    {{- $thumbnail := $original.Fill (default "300x212 q85 CatmullRom Center" $.Site.Params.postPrevThumbResOptions) -}}
+    {{- $thumbnail := $original.Fill (default "300x232 q85 CatmullRom Center" $.Site.Params.fotoPostPrevThumbResOptions)
+    -}}
     <img class="post-content-preview-thumbnail" src="{{ $thumbnail.RelPermalink }}" alt="{{ .Title }}"
       title="{{ .Title }}"><br />
-    {{ .Title }}
     {{- end -}}
+    {{ .Title }}
   </a>
 </div>
 {{ end }}

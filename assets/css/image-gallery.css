@@ -27,3 +27,7 @@
 .featured-image img {
   margin: 0px;
 }
+
+.thehobby-gallery:after {
+  display: none;
+}
