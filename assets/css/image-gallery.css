@@ -28,6 +28,11 @@
   margin: 0px;
 }
 
+.thehobby-gallery {
+  display: inline-block;
+  vertical-align: top;
+}
+
 .thehobby-gallery:after {
   display: none;
 }
