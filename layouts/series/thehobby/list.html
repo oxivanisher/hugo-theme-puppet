@@ -1,11 +1,12 @@
 {{ define "container" }}
-{{ range .Pages }}
+{{ $paginator := .Paginate .Pages }}
+{{ range $paginator.Pages }}
 <div class="image-gallery thehobby-gallery">
   <a href="{{ .RelPermalink }}">
     {{- $images := .Resources.ByType "image" -}}
     {{- $original := $images.GetMatch "{*feature*,*cover*,*thumbnail*}" -}}
     {{- with $original -}}
-    {{- $thumbnail := $original.Fill (default "300x232 q85 CatmullRom Center" $.Site.Params.fotoPostPrevThumbResOptions)
+    {{- $thumbnail := $original.Fill (default "300x160 q85 CatmullRom Center" $.Site.Params.fotoPostPrevThumbResOptions)
     -}}
     <img class="post-content-preview-thumbnail" src="{{ $thumbnail.RelPermalink }}" alt="{{ .Title }}"
       title="{{ .Title }}"><br />
@@ -13,5 +14,20 @@
     {{ .Title }}
   </a>
 </div>
+{{ end }}
+
+{{ if or ($paginator.HasPrev) ($paginator.HasNext) }}
+<ul class="pager">
+  {{ if $paginator.HasPrev }}
+  <li class="previous">
+    <a href="{{ .Paginator.Prev.URL }}">&larr; Neuere Beitr&auml;ge</a>
+  </li>
+  {{ end }}
+  {{ if $paginator.HasNext }}
+  <li class="next">
+    <a href="{{ .Paginator.Next.URL }}">&Auml;ltere Beitr&auml;ge &rarr;</a>
+  </li>
+  {{ end }}
+</ul>
 {{ end }}
 {{ end }}
