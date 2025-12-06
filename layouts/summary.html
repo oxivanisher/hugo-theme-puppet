@@ -5,8 +5,8 @@
     {{- $original := $images.GetMatch "{*feature*,*cover*,*thumbnail*}" -}}
     {{- with $original -}}
     {{- $thumbnail := $original.Fill (default "160x160 q85 CatmullRom Center" $.Site.Params.postPrevThumbResOptions) -}}
-    <img class="post-content-preview-thumbnail" src="{{ $thumbnail.RelPermalink }}" alt="{{ .Title }}"
-      title="{{ .Title }}">
+    <img class="post-content-preview-thumbnail" src="{{ $thumbnail.RelPermalink }}" alt="{{ $.Title }}"
+      title="{{ $.Title }}">
     {{- end -}}
 
     <h2 class="post-title">{{ .Title }}</h2>
