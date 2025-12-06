@@ -8,8 +8,8 @@
     {{- with $original -}}
     {{- $thumbnail := $original.Fill (default "360x190 q85 CatmullRom Center" $.Site.Params.fotoPostPrevThumbResOptions)
     -}}
-    <img class="post-content-preview-thumbnail" src="{{ $thumbnail.RelPermalink }}" alt="{{ .Title }}"
-      title="{{ .Title }}"><br />
+    <img class="post-content-preview-thumbnail" src="{{ $thumbnail.RelPermalink }}" alt="{{ $.Title }}"
+      title="{{ $.Title }}"><br />
     {{- end -}}
     {{ .Title }}
   </a>
