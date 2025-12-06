@@ -1,5 +1,6 @@
 {{ define "container" }}
-{{ $paginator := .Paginate .Pages }}
+{{ $pageSize := mul .Site.Config.Services.Pagination.PagerSize 2 }}
+{{ $paginator := .Paginate .Pages $pageSize }}
 {{ range $paginator.Pages }}
 <div class="image-gallery thehobby-gallery">
   <a href="{{ .RelPermalink }}">
