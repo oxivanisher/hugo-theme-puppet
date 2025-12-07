@@ -4,15 +4,16 @@
 {{ range $paginator.Pages }}
 <div class="image-gallery thehobby-gallery">
   <a href="{{ .RelPermalink }}">
+    {{- $postTitle := .Title -}}
     {{- $images := .Resources.ByType "image" -}}
     {{- $original := $images.GetMatch "{*feature*,*cover*,*thumbnail*}" -}}
     {{- with $original -}}
     {{- $thumbnail := $original.Fill (default "360x190 q85 CatmullRom Center" $.Site.Params.fotoPostPrevThumbResOptions)
     -}}
-    <img class="post-content-preview-thumbnail" src="{{ $thumbnail.RelPermalink }}" alt="{{ $.Title }}"
-      title="{{ $.Title }}"><br />
+    <img class="post-content-preview-thumbnail" src="{{ $thumbnail.RelPermalink }}" alt="{{ $postTitle }}"
+      title="{{ $postTitle }}"><br />
     {{- end -}}
-    {{ .Title }}
+    {{ $postTitle }}
   </a>
 </div>
 {{ end }}
