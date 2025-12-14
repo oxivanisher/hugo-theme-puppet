@@ -1342,7 +1342,7 @@ img::-moz-selection {
       padding: 6px 12px;
       margin-left: -1px;
       line-height: 1.42857143;
-      color: var(--gray-light);
+      color: var(--gray-dark);
       text-decoration: none;
       background-color: var(--body-bg);
       border: 1px solid var(--gray-light);
@@ -1388,7 +1388,7 @@ img::-moz-selection {
 
   >.disabled>span,
   >.disabled>a {
-    color: var(--gray-dark);
+    color: var(--brand-gray);
     cursor: not-allowed;
     background-color: var(--body-bg);
     border-color: var(--gray-light);
@@ -1396,7 +1396,7 @@ img::-moz-selection {
 
     &:hover,
     &:focus {
-      color: var(--brand-gray);
+      color: var(--gray-dark);
       background-color: var(--body-bg);
       border-color: var(--gray-light);
     }
