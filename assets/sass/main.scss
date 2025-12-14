@@ -1373,7 +1373,7 @@ img::-moz-selection {
   >.active>a,
   >.active>span {
     z-index: 3;
-    color: var(--body-bg);
+    color: var(--gray-light);
     cursor: default;
     background-color: var(--gray-light);
     border-color: var(--gray-light);
@@ -1388,7 +1388,7 @@ img::-moz-selection {
 
   >.disabled>span,
   >.disabled>a {
-    color: var(--brand-gray);
+    color: var(--gray-dark);
     cursor: not-allowed;
     background-color: var(--body-bg);
     border-color: var(--gray-light);
