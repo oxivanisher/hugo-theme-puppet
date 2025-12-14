@@ -1326,25 +1326,24 @@ img::-moz-selection {
 }
 
 // Pagination Styles with Dark Mode Support
-nav[aria-label="Page navigation"] {
-  clear: both;
-  text-align: center;
-  margin: 30px 0;
-}
-
 .pagination {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
   padding-left: 0;
-  margin: 0;
+  margin: 30px 0;
   border-radius: 4px;
+  clear: both;
+  list-style: none;
 
   >li {
-    display: inline;
+    display: inline-block;
+    margin: 0;
 
     >a,
     >span {
-      position: relative;
-      float: left;
+      display: block;
       padding: 6px 12px;
       margin-left: -1px;
       line-height: 1.42857143;
