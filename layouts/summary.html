@@ -22,7 +22,7 @@
   </a>
   <p class="post-meta">
     Gepostet von {{ with $.Params.author }} {{ $.Params.author }} {{ else }} {{ .Site.Params.author }} {{ end }} am {{
-    .Date.Format "Mon, Jan 2, 2006" }}
+    .Date | time.Format ":date_full" }}
   </p>
 </div>
 <hr>

@@ -2,7 +2,8 @@
 
 {{ if .IsPage }}
 {{ if $header_img }}
-<header class="intro-header" style="background-image: url('{{ with $header_img }}{{- . -}}{{ end }}'); position: relative;">
+<header class="intro-header"
+  style="background-image: url('{{ with $header_img }}{{- . -}}{{ end }}'); position: relative;">
   {{ else }}
   <header class="intro-header style-text">
     {{ end }}
@@ -20,7 +21,7 @@
             {{- if $.Params.subtitle}}<h2 class="subheading">{{ $.Params.subtitle }}</h2>{{ end }}
             <span class="meta">
               Gepostet von {{ with $.Params.author }} {{ $.Params.author }} {{ else }} {{ .Site.Params.author }} {{ end
-              }} am {{ .Date.Format "Mon, Jan 2, 2006" }}
+              }} am {{ .Date | time.Format ":date_full" }}
             </span>
           </div>
         </div>
