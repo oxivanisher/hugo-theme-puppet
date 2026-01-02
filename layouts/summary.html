@@ -1,12 +1,16 @@
 <div class="post-preview">
   <a href="{{ .RelPermalink }}">
-
+    {{- $postTitle := .Title -}}
     {{- $images := .Resources.ByType "image" -}}
     {{- $original := $images.GetMatch "{*feature*,*cover*,*thumbnail*}" -}}
+    {{- if .Params.images -}}
+      {{- $firstImage := index .Params.images 0 -}}
+      {{- $original = .Resources.GetMatch $firstImage -}}
+    {{- end -}}
     {{- with $original -}}
     {{- $thumbnail := $original.Fill (default "160x160 q85 CatmullRom Center" $.Site.Params.postPrevThumbResOptions) -}}
-    <img class="post-content-preview-thumbnail" src="{{ $thumbnail.RelPermalink }}" alt="{{ $.Title }}"
-      title="{{ $.Title }}">
+    <img class="post-content-preview-thumbnail" src="{{ $thumbnail.RelPermalink }}" alt="{{ $postTitle }}"
+      title="{{ $postTitle }}">
     {{- end -}}
 
     <h2 class="post-title">{{ .Title }}</h2>
