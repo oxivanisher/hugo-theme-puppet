@@ -13,6 +13,10 @@
         {{ if not .Params.hide_thumbnail }}
         {{- $images := $.Resources.ByType "image" -}}
         {{- $original := $images.GetMatch "{*feature*,*cover*,*thumbnail*}" -}}
+        {{- if .Params.images -}}
+          {{- $firstImage := index .Params.images 0 -}}
+          {{- $original = .Resources.GetMatch $firstImage -}}
+        {{- end -}}
         {{- with $original -}}
         {{- $thumbnail := $original.Resize (default "700x q85 Lanczos" $.Site.Params.postThumbResOptions) -}}
         <script>
