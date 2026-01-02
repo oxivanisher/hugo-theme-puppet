@@ -5,13 +5,11 @@
 <div class="image-gallery thehobby-gallery">
   <a href="{{ .RelPermalink }}">
     {{- $postTitle := .Title -}}
-    {{- $original := "" -}}
+    {{- $images := .Resources.ByType "image" -}}
+    {{- $original := $images.GetMatch "{*feature*,*cover*,*thumbnail*}" -}}
     {{- if .Params.images -}}
-      {{- $firstImage := index .Params.images 0 -}}
-      {{- $original = .Resources.GetMatch $firstImage -}}
-    {{- else -}}
-      {{- $images := .Resources.ByType "image" -}}
-      {{- $original = $images.GetMatch "{*feature*,*cover*,*thumbnail*}" -}}
+    {{- $firstImage := index .Params.images 0 -}}
+    {{- $original = .Resources.GetMatch $firstImage -}}
     {{- end -}}
     {{- with $original -}}
     {{- $thumbnail := $original.Fill (default "360x190 q85 CatmullRom Center" $.Site.Params.fotoPostPrevThumbResOptions)
