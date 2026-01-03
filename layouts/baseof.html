@@ -8,7 +8,7 @@
 
   {{- $title := .Title }}
   {{- if not .IsHome }}
-    {{ $title = printf "%s | %s" .Title .Site.Title }}
+  {{ $title = printf "%s | %s" .Title .Site.Title }}
   {{ end -}}
   <title>{{ $title }}</title>
 
@@ -20,29 +20,43 @@
 
   {{- template "_internal/twitter_cards.html" . }}
   {{- template "_internal/opengraph.html" . }}
-  <link rel="stylesheet" href="{{ "css/bootstrap.min.css" | relURL }}"  crossorigin="anonymous">
-  <!-- font-awesome -->
-  <link href="{{ "css/fontawesome.min.css" | relURL }}" rel="stylesheet" type="text/css">
-  <link href="{{ "css/brands.min.css" | relURL }}" rel="stylesheet" type="text/css">
-  <link href="{{ "css/solid.min.css" | relURL }}" rel="stylesheet" type="text/css">
+  {{- $bootstrap_css := resources.Get "css/bootstrap.min.css" -}}
+  <link rel="stylesheet" href="{{ $bootstrap_css.RelPermalink }}" type="text/css" crossorigin="anonymous">
+
+  {{# font-awesome #}}
+  {{- $fontawesome_css := resources.Get "css/fontawesome.min.css" -}}
+  <link rel="stylesheet" href="{{ $fontawesome_css.RelPermalink }}" type="text/css">
+  {{- $brands_css := resources.Get "css/brands.min.css" -}}
+  <link rel="stylesheet" href="{{ $brands_css.RelPermalink }}" type="text/css">
+  {{- $solid_css := resources.Get "css/solid.min.css" -}}
+  <link rel="stylesheet" href="{{ $solid_css.RelPermalink }}" type="text/css">
+
+  {{- $zoom_css := resources.Get "css/zoom.css" | resources.Minify -}}
+  <link rel="stylesheet" href="{{ $zoom_css.RelPermalink }}" type="text/css">
+
+  {{- $baguetteBox_css := resources.Get "css/baguetteBox.min.css" -}}
+  <link rel="stylesheet" href="{{ $baguetteBox_css.RelPermalink }}" type="text/css">
+
+  {{- $image-gallery_css := resources.Get "css/image-gallery.css" | resources.Minify -}}
+  <link rel="stylesheet" href="{{ $image-gallery_css.RelPermalink }}" type="text/css">
 
   {{ $options := (dict "outputStyle" "compressed" "enableSourceMap" (not hugo.IsProduction) "includePaths" (slice
   "sass")) }}
   {{- $style := resources.Get "sass/main.scss" | css.Sass $options -}}
-  <link rel="stylesheet" href="{{ $style.RelPermalink }}">
-
-  {{- $zoom_css := resources.Get "zoomjs/zoom.css" | resources.Minify -}}
-  <link rel="stylesheet" href="{{ $zoom_css.RelPermalink }}">
+  <link rel="stylesheet" href="{{ $style.RelPermalink }}" type="text/css">
 
   {{- range .Site.Params.custom_css -}}
   {{- $custom_template := resources.Get . -}}
   {{- if $custom_template -}}
   {{- $custom_style := $custom_template | css.Sass | resources.Minify }}
-  <link rel="stylesheet" href="{{ $custom_style.RelPermalink }}">
+  <link rel="stylesheet" href="{{ $custom_style.RelPermalink }}" type="text/css">
   {{- end -}}
   {{- end}}
 
-  <script src={{ "js/lazysizes.min.js" | relURL }}></script>
+  {{- $lazysizes_js := resources.Get "js/lazysizes.min.js" -}}
+  <script defer src="{{ $lazysizes_js.RelPermalink }}"></script>
+  {{- $baguetteBox_js := resources.Get "js/baguetteBox.min.js" -}}
+  <script defer src="{{ $baguetteBox_js.RelPermalink }}"></script>
 
   {{- /* custom js */ -}}
   {{- range .Site.Params.custom_js -}}
@@ -70,80 +84,84 @@
   {{ end }}
 
   {{ $themeToggleJs := resources.Get "js/theme-toggle.js" | resources.ExecuteAsTemplate "js/theme-toggle.js" . | minify | fingerprint }}
-  <script src="{{ $themeToggleJs.RelPermalink }}"></script>
+  <script defer src="{{ $themeToggleJs.RelPermalink }}"></script>
 </head>
 {{/*
 <!-- hack iOS CSS :active style -->
-this was <body ontouchstart=""> ... but this is not valid html
- */}}<body>
-  {{- $header_img := .Param "header_img" -}}
-  {{- if .IsHome -}}
-  {{ $header_img = .Site.Params.img_home }}
-  {{- else if eq .Kind "404" -}}
-  {{ $header_img = .Site.Params.img_404 }}
-  {{- end -}}
-  {{- if $header_img -}}
-  {{ .Scratch.Set "header_img" ( $header_img | relURL ) }}
-  {{- end -}}
+this was
 
-  {{- if and .IsPage (.Params.toc) }}
-  {{ .Scratch.Set "toc" true }}
-  {{ end -}}
+<body ontouchstart=""> ... but this is not valid html
+  */-}}
 
-  <!-- Nav -->
-  {{ partial "nav.html" . }}
-  {{ partial "search.html" . }}
+  <body>
+    {{- $header_img := .Param "header_img" -}}
+    {{- if .IsHome -}}
+    {{ $header_img = .Site.Params.img_home }}
+    {{- else if eq .Kind "404" -}}
+    {{ $header_img = .Site.Params.img_404 }}
+    {{- end -}}
+    {{- if $header_img -}}
+    {{ .Scratch.Set "header_img" ( $header_img | relURL ) }}
+    {{- end -}}
 
-  <!-- Page Header -->
-  {{ partial "intro-header.html" . }}
+    {{- if and .IsPage (.Params.toc) }}
+    {{ .Scratch.Set "toc" true }}
+    {{ end -}}
 
-  {{ block "main" . }}
+    <!-- Nav -->
+    {{ partial "nav.html" . }}
+    {{ partial "search.html" . }}
 
-  <!-- Main Content -->
-  <div class="container">
-    <div class="row">
-      {{ if eq .Site.Params.sidebar.enable false }}
+    <!-- Page Header -->
+    {{ partial "intro-header.html" . }}
 
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1
+    {{ block "main" . }}
+
+    <!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        {{ if eq .Site.Params.sidebar.enable false }}
+
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1
       postlist-container">
-        {{ block "container" . }}{{ end }}
-      </div>
-      <!-- Sidebar Container -->
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1
+          {{ block "container" . }}{{ end }}
+        </div>
+        <!-- Sidebar Container -->
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1
       sidebar-container">
-        <!-- Featured Tags -->
-        {{ partial "featured-tags.html" . }}
-        <!-- Friends Blog -->
-        {{ partial "friends.html" . }}
-      </div>
+          <!-- Featured Tags -->
+          {{ partial "featured-tags.html" . }}
+          <!-- Friends Blog -->
+          {{ partial "friends.html" . }}
+        </div>
 
-      {{ else }}
-      <!-- USE SIDEBAR -->
-      <!-- PostList Container -->
-      <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12
+        {{ else }}
+        <!-- USE SIDEBAR -->
+        <!-- PostList Container -->
+        <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12
       col-xs-12 postlist-container">
-        {{ block "container" . }}{{ end }}
-      </div>
-      <!-- Sidebar Container -->
-      <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-12
+          {{ block "container" . }}{{ end }}
+        </div>
+        <!-- Sidebar Container -->
+        <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-12
       col-xs-12 sidebar-container">
 
-        <!-- Featured Tags -->
-        {{ partial "featured-tags.html" . }}
-        {{ partial "short-about.html" . }}
-        <!-- Friends Blog -->
-        {{ partial "friends.html" . }}
+          <!-- Featured Tags -->
+          {{ partial "featured-tags.html" . }}
+          {{ partial "short-about.html" . }}
+          <!-- Friends Blog -->
+          {{ partial "friends.html" . }}
+
+        </div>
+        {{ end }}
 
       </div>
-      {{ end }}
-
     </div>
-  </div>
 
-  {{- end -}}
-  {{- partial "footer.html" . }}
-  {{- $navCollapseHeightToggleJs := resources.Get "js/nav-collapse-hight.js" | resources.ExecuteAsTemplate "js/nav-collapse-hight.js" . | minify | fingerprint -}}
-  {{ block "custom_css" . }}{{ end }}
-  <script src="{{ $navCollapseHeightToggleJs.RelPermalink }}"></script>
-</body>
+    {{- end -}}
+    {{- partial "footer.html" . }}
+    {{- $navCollapseHeightToggleJs := resources.Get "js/nav-collapse-hight.js" | resources.ExecuteAsTemplate "js/nav-collapse-hight.js" . | minify | fingerprint -}}
+    {{ block "custom_css" . }}{{ end }}
+    <script src="{{ $navCollapseHeightToggleJs.RelPermalink }}"></script>
+  </body>
 </html>

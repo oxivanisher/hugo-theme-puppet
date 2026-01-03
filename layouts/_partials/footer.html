@@ -6,11 +6,11 @@
         <!-- SNS Link -->
         {{ partial "sns-links.html" (dict "center" true "social" .Site.Params.social ) }}
         <p class="copyright text-muted">
-        {{- if site.Copyright }}
+          {{- if site.Copyright }}
           {{ site.Copyright | markdownify }}
-        {{- else }}
+          {{- else }}
           Copyright &copy; {{ .Site.Title }} {{ now.Format "2006" }}
-        {{- end }}
+          {{- end }}
           <br>
           Powered by <a href="https://gohugo.io">Hugo</a>
         </p>
@@ -19,15 +19,19 @@
   </div>
 </footer>
 
-<script src={{ "js/jquery.min.js" | relURL }}></script>
-<script src={{"js/bootstrap.min.js" | relURL }} crossorigin="anonymous"></script>
+{{- $jquery_js := resources.Get "js/jquery.min.js" -}}
+<script src="{{ $jquery_js.RelPermalink }}"></script>
+
+{{- $bootstrap_js := resources.Get "js/bootstrap.min.js" -}}
+<script src="{{ $bootstrap_js.RelPermalink }}" crossorigin="anonymous"></script>
 
 {{- /* Custom Theme JavaScript */ -}}
 {{ $mainJs := resources.Get "js/hux-blog.js" | minify | fingerprint }}
 <script src="{{ $mainJs.RelPermalink }}"></script>
 
 {{- /* Simple Jekyll Search */ -}}
-<script src={{ "js/simple-jekyll-search.min.js" | relURL }}></script>
+{{- $simple-jekyll-search_js := resources.Get "js/simple-jekyll-search.min.js" -}}
+<script src="{{ $simple-jekyll-search_js.RelPermalink }}"></script>
 
 {{- $searchJs := resources.Get "js/search.js" | resources.ExecuteAsTemplate "js/search.js" . | minify | fingerprint }}
 <script src="{{ $searchJs.RelPermalink }}"></script>
@@ -71,7 +75,7 @@
 {{- $navJs := resources.Get "js/jquery.nav.js" | minify | fingerprint -}}
 <script src='{{ $navJs.RelPermalink }}'></script>
 <script>
-   $(document).ready( function () {
+  $(document).ready(function () {
     $('.catalog-body').onePageNav({
       currentClass: "active",
       changeHash: !1,
@@ -94,5 +98,8 @@
 {{ template "_internal/google_analytics.html" . }}
 {{ end -}}
 
-{{- $zoom_js := resources.Get "zoomjs/zoom.js" | resources.Minify }}
+{{- $zoom_js := resources.Get "js/zoom.js" | Minify | fingerprint -}}
 <script src="{{ $zoom_js.RelPermalink }}"></script>
+
+{{- $searchJs := resources.Get "js/search.js" | resources.ExecuteAsTemplate "js/search.js" . | minify | fingerprint -}}
+<script src="{{ $searchJs.RelPermalink }}"></script>
