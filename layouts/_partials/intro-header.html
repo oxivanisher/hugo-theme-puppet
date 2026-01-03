@@ -3,7 +3,7 @@
 {{ if .IsPage }}
 {{ if $header_img }}
 <header class="intro-header"
-  style="background-image: url('{{ with $header_img }}{{- . -}}{{ end }}'); position: relative;">
+  style="background-image: url('{{ with $header_img }}{{- . -}}{{ end }}'); position: relative;" fetchpriority="high">
   {{ else }}
   <header class="intro-header style-text">
     {{ end }}
