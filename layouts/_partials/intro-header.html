@@ -30,7 +30,7 @@
   </header>
   {{ else }}
   {{ with $header_img }}
-  <header class="intro-header" style="background-image: url('{{- . -}}')">
+  <header class="intro-header" style="background-image: url('{{- . -}}')" fetchpriority="high">
     {{ else}}
     <header class="intro-header style-text">
       {{ end }}
