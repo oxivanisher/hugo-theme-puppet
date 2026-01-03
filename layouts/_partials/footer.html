@@ -30,8 +30,8 @@
 <script src="{{ $mainJs.RelPermalink }}"></script>
 
 {{- /* Simple Jekyll Search */ -}}
-{{- $simple-jekyll-search_js := resources.Get "js/simple-jekyll-search.min.js" -}}
-<script src="{{ $simple-jekyll-search_js.RelPermalink }}"></script>
+{{- $simple_jekyll_search_js := resources.Get "js/simple-jekyll-search.min.js" -}}
+<script src="{{ $simple_jekyll_search_js.RelPermalink }}"></script>
 
 {{- $searchJs := resources.Get "js/search.js" | resources.ExecuteAsTemplate "js/search.js" . | minify | fingerprint }}
 <script src="{{ $searchJs.RelPermalink }}"></script>
