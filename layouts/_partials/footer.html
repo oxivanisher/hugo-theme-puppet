@@ -98,8 +98,5 @@
 {{ template "_internal/google_analytics.html" . }}
 {{ end -}}
 
-{{- $zoom_js := resources.Get "js/zoom.js" | minify | fingerprint -}}
+{{- $zoom_js := resources.Get "js/zoom.js" | minify -}}
 <script src="{{ $zoom_js.RelPermalink }}"></script>
-
-{{- $searchJs := resources.Get "js/search.js" | resources.ExecuteAsTemplate "js/search.js" . | minify | fingerprint -}}
-<script src="{{ $searchJs.RelPermalink }}"></script>
