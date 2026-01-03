@@ -26,14 +26,14 @@
 <script src="{{ $bootstrap_js.RelPermalink }}" crossorigin="anonymous"></script>
 
 {{- /* Custom Theme JavaScript */ -}}
-{{ $mainJs := resources.Get "js/hux-blog.js" | minify | fingerprint }}
+{{- $mainJs := resources.Get "js/hux-blog.js" | minify | fingerprint -}}
 <script src="{{ $mainJs.RelPermalink }}"></script>
 
 {{- /* Simple Jekyll Search */ -}}
 {{- $simple_jekyll_search_js := resources.Get "js/simple-jekyll-search.min.js" -}}
 <script src="{{ $simple_jekyll_search_js.RelPermalink }}"></script>
 
-{{- $searchJs := resources.Get "js/search.js" | resources.ExecuteAsTemplate "js/search.js" . | minify | fingerprint }}
+{{- $searchJs := resources.Get "js/search.js" | resources.ExecuteAsTemplate "js/search.js" . | minify | fingerprint -}}
 <script src="{{ $searchJs.RelPermalink }}"></script>
 
 {{ if eq .Type "archive" -}}
