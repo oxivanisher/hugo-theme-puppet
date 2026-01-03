@@ -37,9 +37,6 @@
   {{- $baguetteBox_css := resources.Get "css/baguetteBox.min.css" -}}
   <link rel="stylesheet" href="{{ $baguetteBox_css.RelPermalink }}" type="text/css">
 
-  {{- $image_gallery_css := resources.Get "css/image-gallery.css" | resources.Minify -}}
-  <link rel="stylesheet" href="{{ $image_gallery_css.RelPermalink }}" type="text/css">
-
   {{ $options := (dict "outputStyle" "compressed" "enableSourceMap" (not hugo.IsProduction) "includePaths" (slice
   "sass")) }}
   {{- $style := resources.Get "sass/main.scss" | css.Sass $options -}}
@@ -52,6 +49,9 @@
   <link rel="stylesheet" href="{{ $custom_style.RelPermalink }}" type="text/css">
   {{- end -}}
   {{- end}}
+
+  {{- $image_gallery_css := resources.Get "css/image-gallery.css" | resources.Minify -}}
+  <link rel="stylesheet" href="{{ $image_gallery_css.RelPermalink }}" type="text/css">
 
   {{- $lazysizes_js := resources.Get "js/lazysizes.min.js" -}}
   <script defer src="{{ $lazysizes_js.RelPermalink }}"></script>
