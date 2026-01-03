@@ -23,7 +23,7 @@
   {{- $bootstrap_css := resources.Get "css/bootstrap.min.css" -}}
   <link rel="stylesheet" href="{{ $bootstrap_css.RelPermalink }}" type="text/css" crossorigin="anonymous">
 
-  {{# font-awesome #}}
+  {{/* font-awesome */}}
   {{- $fontawesome_css := resources.Get "css/fontawesome.min.css" -}}
   <link rel="stylesheet" href="{{ $fontawesome_css.RelPermalink }}" type="text/css">
   {{- $brands_css := resources.Get "css/brands.min.css" -}}
@@ -91,9 +91,7 @@
 this was
 
 <body ontouchstart=""> ... but this is not valid html
-  */-}}
-
-  <body>
+  */-}}<body>
     {{- $header_img := .Param "header_img" -}}
     {{- if .IsHome -}}
     {{ $header_img = .Site.Params.img_home }}
