@@ -1,11 +1,7 @@
 {{ with .Params.kill_team }}
 <div class="killteam-info">
-  {{- if or .name_de .name_en }}
-  <p class="killteam-info__names">
-    {{- with .name_de }}<span class="killteam-info__name-de">{{ . }}</span>{{ end -}}
-    {{- if and .name_de .name_en }}<span class="killteam-info__name-sep"> / </span>{{ end -}}
-    {{- with .name_en }}<span class="killteam-info__name-en">{{ . }}</span>{{ end -}}
-  </p>
+  {{- with .comment }}
+  <blockquote class="killteam-info__comment">{{ . }}</blockquote>
   {{- end }}
   {{- with .fluff }}
   <blockquote class="killteam-info__fluff">{{ . }}</blockquote>

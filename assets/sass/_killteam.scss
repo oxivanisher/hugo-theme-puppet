@@ -8,26 +8,6 @@
     background-color: rgba(255, 255, 255, 0.04);
   }
 
-  &__names {
-    margin: 0 0 12px 0;
-    font-size: 17px;
-    font-weight: 600;
-    color: var(--brand-primary);
-  }
-
-  &__name-de {
-    font-weight: 700;
-  }
-
-  &__name-en {
-    font-style: italic;
-    font-weight: 400;
-  }
-
-  &__name-sep {
-    color: var(--brand-gray);
-  }
-
   &__fluff {
     margin: 0 0 12px 0;
     padding: 0 0 12px 0;
@@ -42,7 +22,7 @@
     margin: 0 !important;
 
     th, td {
-      border: none !important;
+      border: 1px solid var(--brand-gray) !important;
       padding: 3px 8px 3px 0 !important;
       vertical-align: top;
     }
