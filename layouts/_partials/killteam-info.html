@@ -1,10 +1,10 @@
 {{ with .Params.kill_team }}
 {{- with .comment }}
-<p>{{ . }}</p>
+<p>{{ . | markdownify }}</p>
 {{- end }}
 <div class="killteam-info">
   {{- with .fluff }}
-  <blockquote class="killteam-info__fluff">{{ . }}</blockquote>
+  <blockquote class="killteam-info__fluff">{{ . | markdownify }}</blockquote>
   {{- end }}
   <table class="table table-condensed killteam-info__table">
     <tbody>
