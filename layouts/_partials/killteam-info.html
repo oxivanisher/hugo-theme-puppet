@@ -1,0 +1,42 @@
+{{ with .Params.kill_team }}
+<div class="killteam-info">
+  {{- if or .name_de .name_en }}
+  <p class="killteam-info__names">
+    {{- with .name_de }}<span class="killteam-info__name-de">{{ . }}</span>{{ end -}}
+    {{- if and .name_de .name_en }}<span class="killteam-info__name-sep"> / </span>{{ end -}}
+    {{- with .name_en }}<span class="killteam-info__name-en">{{ . }}</span>{{ end -}}
+  </p>
+  {{- end }}
+  {{- with .fluff }}
+  <blockquote class="killteam-info__fluff">{{ . }}</blockquote>
+  {{- end }}
+  <table class="table table-condensed killteam-info__table">
+    <tbody>
+      {{- with .playstyle }}
+      <tr>
+        <th>Spielstil</th>
+        <td>{{ . }}</td>
+      </tr>
+      {{- end }}
+      {{- with .model_count }}
+      <tr>
+        <th>Modelle</th>
+        <td>{{ . }}</td>
+      </tr>
+      {{- end }}
+      {{- with .release_date }}
+      <tr>
+        <th>Erscheinungsdatum</th>
+        <td>{{ . }}</td>
+      </tr>
+      {{- end }}
+      {{- with .finished_date }}
+      <tr>
+        <th>Fertiggestellt</th>
+        <td>{{ . }}</td>
+      </tr>
+      {{- end }}
+    </tbody>
+  </table>
+</div>
+{{ end }}
