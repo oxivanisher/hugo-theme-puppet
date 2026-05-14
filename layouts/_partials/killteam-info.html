@@ -1,6 +1,6 @@
 {{ with .Params.kill_team }}
 {{- with .comment }}
-<p>{{ . | markdownify }}</p>
+{{ . | markdownify }}
 {{- end }}
 <div class="killteam-info">
   {{- with .fluff }}
