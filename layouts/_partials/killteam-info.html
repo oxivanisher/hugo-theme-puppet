@@ -1,8 +1,8 @@
 {{ with .Params.kill_team }}
+{{- with .comment }}
+<p>{{ . }}</p>
+{{- end }}
 <div class="killteam-info">
-  {{- with .comment }}
-  {{ . }}
-  {{- end }}
   {{- with .fluff }}
   <blockquote class="killteam-info__fluff">{{ . }}</blockquote>
   {{- end }}
