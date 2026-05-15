@@ -9,6 +9,12 @@
   <h5 class="killteam-info__title">Team-Informationen</h5>
   <table class="table table-condensed killteam-info__table">
     <tbody>
+      {{- with .affiliation }}
+      <tr>
+        <th>Fraktion:</th>
+        <td>{{ . }}</td>
+      </tr>
+      {{- end }}
       {{- with .playstyle }}
       <tr>
         <th>Spielstil:</th>
