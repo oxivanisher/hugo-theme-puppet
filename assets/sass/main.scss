@@ -795,8 +795,13 @@ samp {
 // Post Preview Pages (Home Page)
 
 .post-preview {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
   >a {
-    display: flow-root;
     color: var(--gray-dark);
 
     &:hover,
