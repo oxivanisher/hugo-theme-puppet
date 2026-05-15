@@ -18,9 +18,14 @@
     <h3 class="post-subtitle">{{ . }}</h3>
     {{ end }}
     <div class="post-content-preview">
-      {{ if isset .Params "description" }} {{ index .Params "description" }}
+      {{ with .Params.kill_team }}
+        {{ with .comment }}{{ . | plainify | truncate 180 }}
+        {{ else }}{{ with .fluff }}{{ . | plainify | truncate 180 }}{{ end }}
+        {{ end }}
+      {{ else if isset .Params "description" }}
+        {{ index .Params "description" }}
       {{ else }}
-      {{ .Summary | plainify | safeHTML | truncate 180 }}
+        {{ .Summary | plainify | safeHTML | truncate 180 }}
       {{ end }}
     </div>
   </a>
