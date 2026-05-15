@@ -22,10 +22,12 @@
         {{ with .comment }}{{ . | plainify | truncate 180 }}
         {{ else }}{{ with .fluff }}{{ . | plainify | truncate 180 }}{{ end }}
         {{ end }}
-      {{ else if isset .Params "description" }}
-        {{ index .Params "description" }}
       {{ else }}
-        {{ .Summary | plainify | safeHTML | truncate 180 }}
+        {{ if isset .Params "description" }}
+          {{ index .Params "description" }}
+        {{ else }}
+          {{ .Summary | plainify | safeHTML | truncate 180 }}
+        {{ end }}
       {{ end }}
     </div>
   </a>
