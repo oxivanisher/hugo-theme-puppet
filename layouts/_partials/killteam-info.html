@@ -12,7 +12,7 @@
       {{- with .affiliation }}
       <tr>
         <th>Fraktion:</th>
-        <td>{{ . }}</td>
+        <td>{{ . }}{{- with $.Params.kill_team.faction }} | {{ . }}{{- end }}</td>
       </tr>
       {{- end }}
       {{- with .playstyle }}
