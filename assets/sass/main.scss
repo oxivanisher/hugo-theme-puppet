@@ -796,6 +796,7 @@ samp {
 
 .post-preview {
   >a {
+    display: flow-root;
     color: var(--gray-dark);
 
     &:hover,
