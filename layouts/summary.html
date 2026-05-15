@@ -19,8 +19,8 @@
     {{ end }}
     <div class="post-content-preview">
       {{ with .Params.kill_team }}
-        {{ with .comment }}{{ . | plainify | truncate 180 }}
-        {{ else }}{{ with .fluff }}{{ . | plainify | truncate 180 }}{{ end }}
+        {{ with .comment }}{{ . | markdownify | plainify | truncate 180 }}
+        {{ else }}{{ with .fluff }}{{ . | markdownify | plainify | truncate 180 }}{{ end }}
         {{ end }}
       {{ else }}
         {{ if isset .Params "description" }}
