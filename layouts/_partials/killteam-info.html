@@ -3,10 +3,10 @@
 <div class="killteam-info__comment">{{ . | markdownify }}</div>
 {{- end }}
 <div class="killteam-info">
-  <h5 class="killteam-info__title">Team-Informationen</h5>
   {{- with .fluff }}
   <blockquote class="killteam-info__fluff">{{ . | markdownify }}</blockquote>
   {{- end }}
+  <h5 class="killteam-info__title">Team-Informationen</h5>
   <table class="table table-condensed killteam-info__table">
     <tbody>
       {{- with .playstyle }}
