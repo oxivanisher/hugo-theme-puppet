@@ -1,5 +1,4 @@
 {{ with .Params.kill_team }}
-{{ partial "warhammer-explainer.html" $ }}
 {{- with .comment }}
 <div class="killteam-info__comment">{{ . | markdownify }}</div>
 {{- end }}
