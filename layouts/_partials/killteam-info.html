@@ -29,10 +29,12 @@
         <td>{{ . }}</td>
       </tr>
       {{- end }}
-      {{- with .box }}
+      {{- with .box_ger }}
       <tr>
-        <th>Box:</th>
-        <td>{{ . }}</td>
+        <th>Box Englisch:</th>
+        <td>{{ . }}
+          {{- with .box_eng }}{{ . }}{{ end -}}
+        </td>
       </tr>
       {{- end }}
       {{- with .release_date }}
