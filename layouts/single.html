@@ -31,7 +31,7 @@
         </div>
         {{- end -}}
         {{- end -}}
-        {{ if where .Params.series "thehobby" }}{{ partial "warhammer-explainer.html" . }}{{ end }}
+        {{ if in .Params.series "thehobby" }}{{ partial "warhammer-explainer.html" . }}{{ end }}
         {{ partial "killteam-info.html" . }}
         {{ .Content }}
         {{ partial "killteam-footer.html" . }}
