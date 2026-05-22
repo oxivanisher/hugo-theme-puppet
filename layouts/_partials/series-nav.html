@@ -1,0 +1,43 @@
+{{ $seriesName := index .Params.series 0 }}
+{{ $newerLabel := "Neuer" }}
+{{ $olderLabel := "Älter" }}
+{{ with index .Site.Params.seriesNavLabels $seriesName }}
+  {{ $newerLabel = (default "Neuer" .newer) }}
+  {{ $olderLabel = (default "Älter" .older) }}
+{{ end }}
+{{ $seriesPages := where .Site.RegularPages "Params.series" "intersect" (slice $seriesName) }}
+{{ $sorted := sort $seriesPages "Date" "asc" }}
+{{ range $i, $page := $sorted }}
+  {{ if eq $page $ }}
+    {{ if gt $i 0 }}
+      {{ $.Scratch.Set "seriesPrev" (index $sorted (sub $i 1)) }}
+    {{ end }}
+    {{ $nextIdx := add $i 1 }}
+    {{ if lt $nextIdx (len $sorted) }}
+      {{ $.Scratch.Set "seriesNext" (index $sorted $nextIdx) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ $seriesPrev := .Scratch.Get "seriesPrev" }}
+{{ $seriesNext := .Scratch.Get "seriesNext" }}
+{{ if or $seriesPrev $seriesNext }}
+<hr style="visibility: hidden;">
+<ul class="pager">
+  {{ if $seriesNext }}
+  <li class="previous">
+    <a href="{{ $seriesNext.RelPermalink }}" data-toggle="tooltip" data-placement="top" title="{{ $seriesNext.Title }}">
+      &larr; {{ $newerLabel }}<br>
+      <span>{{ $seriesNext.Title }}</span>
+    </a>
+  </li>
+  {{ end }}
+  {{ if $seriesPrev }}
+  <li class="next">
+    <a href="{{ $seriesPrev.RelPermalink }}" data-toggle="tooltip" data-placement="top" title="{{ $seriesPrev.Title }}">
+      {{ $olderLabel }} &rarr;<br>
+      <span>{{ $seriesPrev.Title }}</span>
+    </a>
+  </li>
+  {{ end }}
+</ul>
+{{ end }}
