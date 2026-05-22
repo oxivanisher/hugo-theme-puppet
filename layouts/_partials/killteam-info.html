@@ -29,12 +29,13 @@
         <td>{{ . }}</td>
       </tr>
       {{- end }}
-      {{- with .box_ger }}
+      {{- $boxes := slice }}
+      {{- with .box_ger }}{{- $boxes = $boxes | append . }}{{- end }}
+      {{- with .box_eng }}{{- $boxes = $boxes | append . }}{{- end }}
+      {{- if $boxes }}
       <tr>
-        <th>Box Englisch:</th>
-        <td>{{ . }}
-          {{- with .box_eng }}{{ . }}{{ end -}}
-        </td>
+        <th>Box:</th>
+        <td>{{ delimit $boxes " / " }}</td>
       </tr>
       {{- end }}
       {{- with .release_date }}
