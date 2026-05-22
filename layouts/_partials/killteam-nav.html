@@ -16,19 +16,19 @@
 {{ if or $ktPrev $ktNext }}
 <hr style="visibility: hidden;">
 <ul class="pager">
-  {{ if $ktPrev }}
+  {{ if $ktNext }}
   <li class="previous">
-    <a href="{{ $ktPrev.RelPermalink }}" data-toggle="tooltip" data-placement="top" title="{{ $ktPrev.Title }}">
-      &larr; &Auml;lteres Kill Team<br>
-      <span>{{ $ktPrev.Title }}</span>
+    <a href="{{ $ktNext.RelPermalink }}" data-toggle="tooltip" data-placement="top" title="{{ $ktNext.Title }}">
+      &larr; Neueres Kill Team<br>
+      <span>{{ $ktNext.Title }}</span>
     </a>
   </li>
   {{ end }}
-  {{ if $ktNext }}
+  {{ if $ktPrev }}
   <li class="next">
-    <a href="{{ $ktNext.RelPermalink }}" data-toggle="tooltip" data-placement="top" title="{{ $ktNext.Title }}">
-      Neueres Kill Team &rarr;<br>
-      <span>{{ $ktNext.Title }}</span>
+    <a href="{{ $ktPrev.RelPermalink }}" data-toggle="tooltip" data-placement="top" title="{{ $ktPrev.Title }}">
+      &Auml;lteres Kill Team &rarr;<br>
+      <span>{{ $ktPrev.Title }}</span>
     </a>
   </li>
   {{ end }}
