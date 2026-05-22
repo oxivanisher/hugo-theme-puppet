@@ -34,6 +34,7 @@
         {{ partial "killteam-info.html" . }}
         {{ .Content }}
         {{ partial "killteam-footer.html" . }}
+        {{ if .Params.kill_team }}{{ partial "killteam-nav.html" . }}{{ end }}
 
         <hr style="visibility: hidden;">
         <ul class="pager" hidden>
