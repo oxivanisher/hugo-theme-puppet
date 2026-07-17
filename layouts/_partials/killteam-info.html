@@ -27,6 +27,13 @@
         <td>{{ . }}</td>
       </tr>
       {{- end }}
+      {{- with .season }}
+      {{- $classified := index $.Site.Params.killTeamSeasons . }}
+      <tr>
+        <th>Season:</th>
+        <td>{{ . }} ({{ if $classified }}Classified{{ else }}Non-Classified{{ end }})</td>
+      </tr>
+      {{- end }}
       {{- $boxes := slice }}
       {{- with .box_ger }}{{- $boxes = $boxes | append . }}{{- end }}
       {{- with .box_eng }}{{- $boxes = $boxes | append . }}{{- end }}
