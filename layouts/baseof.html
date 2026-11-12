@@ -37,7 +37,7 @@
   {{- $baguetteBox_css := resources.Get "css/baguetteBox.min.css" -}}
   <link rel="stylesheet" href="{{ $baguetteBox_css.RelPermalink }}" type="text/css">
 
-  {{ $options := (dict "outputStyle" "compressed" "enableSourceMap" (not hugo.IsProduction) "includePaths" (slice
+  {{ $options := (dict "transpiler" "dartsass" "outputStyle" "compressed" "enableSourceMap" (not hugo.IsProduction) "includePaths" (slice
   "sass")) }}
   {{- $style := resources.Get "sass/main.scss" | css.Sass $options -}}
   <link rel="stylesheet" href="{{ $style.RelPermalink }}" type="text/css">
@@ -45,7 +45,7 @@
   {{- range .Site.Params.custom_css -}}
   {{- $custom_template := resources.Get . -}}
   {{- if $custom_template -}}
-  {{- $custom_style := $custom_template | css.Sass | resources.Minify }}
+  {{- $custom_style := $custom_template | css.Sass (dict "transpiler" "dartsass") | resources.Minify }}
   <link rel="stylesheet" href="{{ $custom_style.RelPermalink }}" type="text/css">
   {{- end -}}
   {{- end}}

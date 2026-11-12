@@ -1,18 +1,14 @@
+@use "sass:color";
+@use "sass:math";
+
 $start-color: #bbbbee;
 $end-color: #6c757d;
 $spread: {{ .spread }};
 $weighting: {{ .weighting }};
+
+// Linear interpolation from $start-color ($weighting = 0) to $end-color ($weighting = $spread).
 @function tagColor() {
-    $sr: red($start-color);
-    $sg: green($start-color);
-    $sb: blue($start-color);
-    $incr-r: (red($end-color) - $sr) / $spread;
-    $incr-g: (green($end-color) - $sg) / $spread;
-    $incr-b: (blue($end-color) - $sb) / $spread;
-
-    $tag-color: rgb( $sr + $incr-r * $weighting, $sg + $incr-g * $weighting, $sb + $incr-b * $weighting );
-
-    @return $tag-color;
+    @return color.mix($end-color, $start-color, math.percentage(math.div($weighting, $spread)), $method: rgb);
 }
 
 .tag-color__{{ .count }} {
