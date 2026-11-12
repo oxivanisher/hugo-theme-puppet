@@ -1,5 +1,40 @@
 .highlight {
+  position: relative;
+
   pre {
     font-size: 14px;
+  }
+
+  .code-copy-btn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    padding: 2px 7px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--pre-text);
+    background-color: var(--pre-bg);
+    border: 1px solid var(--pre-border);
+    border-radius: 4px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.15s ease-in-out;
+
+    &.copied {
+      color: #40a02b;
+    }
+  }
+
+  &:hover .code-copy-btn,
+  .code-copy-btn:focus-visible,
+  .code-copy-btn.copied {
+    opacity: 1;
+  }
+
+  // Touch devices have no hover, so always show the button there.
+  @media (hover: none) {
+    .code-copy-btn {
+      opacity: 1;
+    }
   }
 }

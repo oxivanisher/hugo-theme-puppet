@@ -100,3 +100,6 @@
 
 {{- $zoom_js := resources.Get "js/zoom.js" | minify -}}
 <script src="{{ $zoom_js.RelPermalink }}"></script>
+
+{{- $codeCopyJs := resources.Get "js/code-copy.js" | minify | fingerprint -}}
+<script src="{{ $codeCopyJs.RelPermalink }}"></script>
