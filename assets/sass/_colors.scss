@@ -25,6 +25,12 @@
   --nav-focus: var(--white-faded);
 
   --heading-text: var(--body-bg);
+
+  --code-text: #c7254e;
+  --code-bg: #f9f2f4;
+  --pre-text: #333333;
+  --pre-bg: #f5f5f5;
+  --pre-border: #cccccc;
 }
 
 .dark-mode {
@@ -52,6 +58,12 @@
   --nav-focus: var(--white-faded);
 
   --heading-text: var(--text-color);
+
+  --code-text: #ff8fab;
+  --code-bg: #3a3035;
+  --pre-text: #d0d0d0;
+  --pre-bg: #232323;
+  --pre-border: #444444;
 }
 
 .sun-btn {

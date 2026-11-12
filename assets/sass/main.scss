@@ -148,7 +148,20 @@ pre,
   -webkit-overflow-scrolling: touch;
 }
 
+code {
+  color: var(--code-text);
+  background-color: var(--code-bg);
+}
+
+pre {
+  color: var(--pre-text);
+  background-color: var(--pre-bg);
+  border-color: var(--pre-border);
+}
+
 pre code {
+  color: inherit;
+  background-color: transparent;
   display: block;
   width: auto;
   white-space: pre; // save it but no-wrap;
